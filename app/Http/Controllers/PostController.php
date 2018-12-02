@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -36,7 +37,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the data
+
+        $this->validate($request,array(
+            'title' => 'required|max:255',
+            'body' => 'required'
+        ));
+
+        // store in the database
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        $post->save();
+
+        // redirect to another page
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
