@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Session;
 
 class PostController extends Controller
 {
@@ -52,6 +52,8 @@ class PostController extends Controller
 
         $post->save();
 
+        Session::flash('success','The blog post was successfully saved !');
+
         // redirect to another page
 
         return redirect()->route('posts.show', $post->id);
@@ -65,7 +67,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('posts.show');
     }
 
     /**
