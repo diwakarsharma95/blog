@@ -4,6 +4,9 @@
     </div>
 @endif
 
+
+{{--Turn of javascript validitoin in create.blade.php page to see the changes--}}
+{{--With javascript validation this error message will not show--}}
 @if(count($errors)>0)
         <div class="alert alert-danger" role="alert">
             <strong>Errors:</strong>
