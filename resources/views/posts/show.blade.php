@@ -5,12 +5,16 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <h1>{{$post->title}}</h1>
             <p class="lead">{{$post->body}}</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="well">
+                <dl class="dl-horizontal">
+                    <dt>Url</dt>
+                    <dd><a href="{{url($post->slug)}}">{{url($post->slug)}}</a></dd>
+                </dl>
                 <dl class="dl-horizontal">
                     <dt>Created At: </dt>
                     <dd>{{date('M j, Y h:ia',strtotime($post->created_at))}}</dd>
